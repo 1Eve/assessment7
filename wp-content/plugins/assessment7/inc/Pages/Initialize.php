@@ -10,7 +10,9 @@ Class Initialize{
         return [
             Pages\AdminDashboard::class,
             Pages\AddEmployeeDB::class,
-            Base\AssessmentStyles::class
+            Base\AssessmentStyles::class,
+            Api\SettingsApi::class,
+            Pages\AddEmployeeDB::class
         ];
     }
 
