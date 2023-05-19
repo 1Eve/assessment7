@@ -8,9 +8,9 @@ namespace Inc;
 Class Initialize{
     public static function get_services(){
         return [
-            Pages\AddMainMenu::class,
-            Pages\AddTicket::class,
-            Base\Loadstyles::class
+            Pages\AdminDashboard::class,
+            Pages\AddEmployeeDB::class,
+            Base\AssessmentStyles::class
         ];
     }
 
