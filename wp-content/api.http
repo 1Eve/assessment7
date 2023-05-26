@@ -1,0 +1,40 @@
+#### Coverting project to json file
+
+GET http://localhost/assessment7/wp-json
+
+###fetching elimmnating some data
+
+GET http://localhost/assessment7/wp-json/wp/v2
+
+####fetching post
+GET http://localhost/assessment7/wp-json/wp/v2/posts
+
+####fetching a single post
+GET http://localhost/assessment7/wp-json/wp/v2/posts/1
+
+###FETCHING USER
+GET http://localhost/assessment7/wp-json/wp/v2/users
+
+
+###creating a post
+
+
+POST http://localhost/assessment7/wp-json/wp/v2/posts
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2Fzc2Vzc21lbnQ3IiwiaWF0IjoxNjg1MDcwMjUyLCJuYmYiOjE2ODUwNzAyNTIsImV4cCI6MTY4NTY3NTA1MiwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.jfLyDcmQ2-nFSy583fdIw-fWWg4kxRThgcNYwW03gYE
+
+{
+    "title": "Created using REST API By Editor",
+    "content": "Body created using REST API By Editor",
+    "status": "publish"
+}
+
+
+###Getting  atoken
+POST http://localhost/assessment7/wp-json/jwt-auth/v1/token
+Content-Type: application/json
+
+{
+    "password":"admin",
+    "username":"admin"
+}

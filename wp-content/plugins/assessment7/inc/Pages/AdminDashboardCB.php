@@ -11,6 +11,8 @@ use \Inc\Api\CallBacks\AdminCB;
 
 class AdminDashboard extends BaseController
 {
+    public $mainmenu;
+    public $settings_api;
     public function __construct()
     {
         $this->mainmenu = [
@@ -37,6 +39,7 @@ class AdminDashboard extends BaseController
     {
         $this->settings_api = new SettingsApi();
         $this->settings_api->addPages($this->mainmenu)->register();
+        
     }
 
     public function createEmployeePage()

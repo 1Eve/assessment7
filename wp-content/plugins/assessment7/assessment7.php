@@ -27,29 +27,20 @@ if(file_exists(dirname(__FILE__).'/vendor/autoload.php')){
     require_once(dirname(__FILE__).'/vendor/autoload.php');
 }
 
-class assessment7 {
-    //Activate my plugin
-    function activatePlugin()
-    {
-        require_once plugin_dir_path(__FILE__). '/inc/Base/Activate.php';
-        Activate::activatePlugin();
-    }
-    //Deactivate my plugin
-    function DeactivatePlugin()
-    {
-        require_once plugin_dir_path(__FILE__). '/inc/Base/Deactivate.php';
-        Deactivate::deactivatePlugin();
-    }
-
+function activatePlugin()
+{
+    Inc\Base\Activate::activatePlugin();
 }
+//Deactivate my plugin
+function DeactivatePlugin()
+{
+    Inc\Base\Deactivate::deactivatePlugin();
+}
+register_activation_hook(__FILE__, 'activatePlugin');
+register_deactivation_hook(__FILE__, 'DeactivatePlugin');
+
+
 
 if(class_exists('Inc\\Initialize')){
-    Initialize::register_services(); 
+    Inc\Initialize::register_services(); 
 }
-
-if(class_exists('assessment7')){
-    $Instance = new Assessment7();
-}
-
-$Instance->activatePlugin();
-$Instance->DeactivatePlugin();

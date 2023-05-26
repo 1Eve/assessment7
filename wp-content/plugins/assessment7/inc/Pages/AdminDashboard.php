@@ -6,6 +6,7 @@
 
 namespace Inc\Pages;
 
+use Inc\Api\CallBacks\AdminCB;
 use Inc\Base\BaseController;
 use Inc\Api\SettingsApi;
 
@@ -15,8 +16,10 @@ class AdminDashboard extends BaseController
     public $mainmenu;
     public $submenu;
 
+    public $callbacks;
+
     public function __construct()
-    {
+    { $this->callbacks = new AdminCB();
         $this->settings_api = new SettingsApi();
 
         $this->mainmenu = [
@@ -24,9 +27,7 @@ class AdminDashboard extends BaseController
             'menu_title' => 'Add Employee',
             'capability' => 'manage_options',
             'menu_slug' => 'add_employee',
-            'callback' => function () {
-                echo 'Test Add Employee';
-            },
+            'callback' => [$this->callbacks, "AddEmployee"],
             'icon_url' => 'dashicons-plus',
             'position' => 110
         ];
@@ -38,9 +39,8 @@ class AdminDashboard extends BaseController
                 'menu_title' => 'View Employees',
                 'capability' => 'manage_options',
                 'menu_slug' => 'view_employee',
-                'callback' => function () {
-                    echo 'Test Employee';
-                }
+                'callback' => [$this->callbacks, "ViewEmployee"]
+            
             ]
         ];
     }
@@ -48,6 +48,6 @@ class AdminDashboard extends BaseController
     // Register the admin pages and subpages
     public function register()
     {
-        $this->settings_api->addPages([$this->mainmenu])->addSubPages([$this->submenu])->register();
+        $this->settings_api->addPages([$this->mainmenu])->HasSubPage()->addSubPages($this->submenu)->register();
     }
 }
